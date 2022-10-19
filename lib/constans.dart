@@ -5,3 +5,7 @@ const Color buttonColor = Color(0xFF7895B2);
 const Color textColor = Colors.black;
 
 const String title = "To Do";
+
+class CustomTextStyle {
+  static TextStyle toDoTextStyle = const TextStyle(fontSize: 18);
+}
