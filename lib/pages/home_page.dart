@@ -95,17 +95,28 @@ class _HomePageState extends State<HomePage> {
           )
         ]),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        currentIndex: 0,
-        elevation: 0,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list, color: Colors.black), label: "Tasks"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.search, color: Colors.black), label: "Overview"),
-        ],
-      ),
+      bottomNavigationBar: CustomButtomNavBar(),
+    );
+  }
+}
+
+class CustomButtomNavBar extends StatelessWidget {
+  const CustomButtomNavBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      selectedItemColor: Colors.black,
+      currentIndex: 0,
+      elevation: 0,
+      items: const [
+        BottomNavigationBarItem(
+            icon: Icon(Icons.list, color: Colors.black), label: "Tasks"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.search, color: Colors.black), label: "Overview"),
+      ],
     );
   }
 }
