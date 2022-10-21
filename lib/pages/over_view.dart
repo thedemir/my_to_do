@@ -11,6 +11,7 @@ class OverView extends StatefulWidget {
 
 class _OverViewState extends State<OverView> {
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
@@ -36,7 +37,7 @@ class _OverViewState extends State<OverView> {
                 Text("Completed Task",
                     style: Theme.of(context).textTheme.headline6?.copyWith(
                         color: textColor, fontWeight: FontWeight.bold)),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 Text("17",
@@ -47,7 +48,7 @@ class _OverViewState extends State<OverView> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomButtomNavBar(),
+      bottomNavigationBar: const CustomButtomNavBar(),
     );
   }
 }

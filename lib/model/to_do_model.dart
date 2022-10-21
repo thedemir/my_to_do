@@ -1,12 +1,21 @@
+import 'package:hive_flutter/hive_flutter.dart';
+
 class ToDoModel {
-  int? id;
-  String toDoText;
-  bool isDone;
+  List toDoList = [];
 
-  ToDoModel({required this.id, required this.toDoText, this.isDone = false});
+  final _mybox = Hive.box('mybox'); //reference
 
-  static List<ToDoModel> toDoList = [
-    ToDoModel(id: 1, toDoText: "Do Homework"),
-    ToDoModel(id: 2, toDoText: "Make Logo"),
-  ];
+  void createInitialData() {
+    toDoList = [
+      ["I'm ready for use app", false],
+    ];
+  }
+
+  void updateData() {
+    _mybox.put("TODOLİST", toDoList);
+  }
+
+  void loadData() {
+    toDoList = _mybox.get("TODOLİST");
+  }
 }
