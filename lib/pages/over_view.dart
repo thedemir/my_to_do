@@ -50,9 +50,8 @@ class _OverViewState extends State<OverView> {
               OverViewCart(
                   title: "Current Task", count: database.toDoList.length),
               OverViewCart(
-                  title: "Complated Task",
-                  count: database.complatedList.length),
-              OverViewCart(title: "Demo Demo", count: database.toDoCount),
+                  title: "Comming Soon", count: database.complatedList.length),
+              OverViewCart(title: "Coming Soon...", count: 0),
             ],
           ),
         ),
