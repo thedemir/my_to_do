@@ -39,9 +39,17 @@ class _HomePageState extends State<ToDoPage> {
     return counter;
   }
 
+  void dellete(index) {
+    setState(() {
+      database.toDoList.removeAt(index);
+      database.updateData();
+    });
+  }
+
   void changeCheckBox(int index) {
     setState(() {
       database.toDoList[index][1] = !database.toDoList[index][1];
+      database.complatedList.add(index);
     });
     print("çalıştı");
   }
@@ -57,7 +65,8 @@ class _HomePageState extends State<ToDoPage> {
 
   @override
   Widget build(BuildContext context) {
-    log(("${database.toDoList.length}"));
+    log((" to do ${database.toDoList.length}"));
+    log((" count ${database.toDoCount}"));
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 90,
@@ -67,16 +76,16 @@ class _HomePageState extends State<ToDoPage> {
           padding: const EdgeInsets.only(left: 15, top: 20),
           child: Text(
             "To Do",
-            style: Theme.of(context)
-                .textTheme
-                .headline4
-                ?.copyWith(color: textColor, fontWeight: FontWeight.bold),
+            style: CustomTextStyle.appBarTitle,
           ),
         ),
       ),
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          SizedBox(
+            height: 16,
+          ),
           ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -86,6 +95,7 @@ class _HomePageState extends State<ToDoPage> {
                 toDoText: database.toDoList[index][0],
                 isDone: database.toDoList[index][1],
                 change: () => changeCheckBox(index),
+                dellete: () => dellete(index),
               );
             },
           ),
@@ -107,6 +117,7 @@ class _HomePageState extends State<ToDoPage> {
                     ),
                   ),
                   hintText: "New Task...",
+                  hintStyle: _toDoTextStye,
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:my_to_do/constans.dart';
 import 'package:my_to_do/pages/over_view.dart';
 import 'package:my_to_do/pages/to_do_view.dart';
 
@@ -24,12 +25,17 @@ class _HomePageState extends State<HomePage> {
             _currentindex = index;
           });
         }),
+        backgroundColor: bgColor,
         selectedItemColor: Colors.black,
         currentIndex: _currentindex,
         elevation: 0,
+        selectedLabelStyle: CustomTextStyle.bottomNavBarStyle,
+        unselectedLabelStyle: CustomTextStyle.bottomNavBarStyle,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.list, color: Colors.black), label: "Tasks"),
+            icon: Icon(Icons.list, color: Colors.black),
+            label: "Tasks",
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.search, color: Colors.black), label: "Overview"),
         ],
